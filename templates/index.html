@@ -1,1 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malaria Detection</title>
+    <style>
+        /* CSS Styles for Malaria Detection */
+        /* Body Styles */
+        body {
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 20px;
+          box-sizing: border-box;
+          background: #757f9a; 
+          background: -webkit-linear-gradient(to right, #757f9a, #d7dde8); 
+          background: linear-gradient(to right, #757f9a, #d7dde8); 
+        }
+        
+        /* Container Styles */
+        .container {
+          max-width: 800px;
+          margin: 0 auto;
+          border: solid 2px #333;
+          padding: 40px;
+          
+        }
+
+        /* Heading Styles */
+        h1 {
+          color: #333;
+          font-size: 34px;
+          margin-bottom: 20px;
+          text-align: center;
+        }
+        
+        h2 {
+          color: #333;
+          font-size: 20px;
+          margin-top: 40px;
+          margin-bottom: 10px;
+          text-align: center;
+        }
+        
+        h3 {
+          color: #333;
+          font-size: 18px;
+          margin-top: 20px;
+          margin-bottom: 10px;
+          text-align: center;
+        }
+
+        /* Form Styles */
+        form {
+          text-align: center;
+        }
+
+        input[type="file"] {
+          margin-bottom: 10px;
+        }
+
+        input[type="submit"] {
+          background-color: #4CAF50;
+          border: none;
+          color: white;
+          padding: 10px 20px;
+          text-decoration: none;
+          font-size: 16px;
+          cursor: pointer;
+          border-radius: 2px;
+          transition: background-color 0.3s ease;
+        }
+        
+
+        input[type="submit"]:hover {
+          background-color: hsl(123, 40%, 32%);
+        }
+
+        input[type="submit"]:focus {
+          outline: none;
+        }
+
+        /* Image Styles */
+        img {
+          max-width: 100%;
+          margin-top: 10px;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+          .container {
+            padding: 20px;
+          }
+          h1 {
+            font-size: 28px;
+          }
+        }
+    </style>
+</head>
+<body>
+    <h1>Malaria Detection</h1>
+   
+    <form  action="/predict" method="post" enctype="multipart/form-data">
+        <input type="file" name="image" accept=".png, .jpg, .jpeg" required><br>
+        <br>
+        <input type="submit" value="Predict">
+    </form>
+    
+    {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+        {% if image_path %}
+            <h3>Uploaded Image:</h3>
+            <img src="{{ image_path }}" alt="Uploaded Image">
+        {% endif %}
+    {% endif %}
+</body>
+</html>
 
